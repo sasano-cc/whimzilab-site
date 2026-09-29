@@ -3,7 +3,7 @@
 Public parent/guardian support and privacy pages for **My Little World: Create & Play**.
 
 - Home: https://whimzilab.com/
-- iOS privacy policy: https://whimzilab.com/privacy/
+- iOS and Android privacy policy: https://whimzilab.com/privacy/
 - Support: https://whimzilab.com/support/
 - Public support/privacy email: whimzilab@gmail.com
 
@@ -24,6 +24,28 @@ Sources:
 - [GitHub Pages data collection](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection)
 - [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement)
 
-The website source contains no added scripts, registration or contact forms. This source review does not certify all provider behavior or the final native app. The policy covers iOS only; Android requires its own review. Verify policy statements whenever the app, hosting or support practices change.
+The website source contains no added scripts, registration or contact forms. This source review does not certify all provider behavior or the final native app. At that revision, the policy covered iOS only. See the Android update below. Verify policy statements whenever the app, hosting or support practices change.
 
 The published App Store name is used on these pages; this does not assert that the app has completed App Review or is publicly released. App Store Connect and native app links must be maintained separately.
+
+## Android coverage — 29 September 2026
+
+The privacy page now covers the native iOS and Android apps, including test versions. The home and support pages use the same scope. Existing URLs and section anchors are preserved.
+
+The Android section describes Google Play Billing, product/price and ownership checks, purchase-token acknowledgement, the signed local purchase record, store-provider processing and Android backups. It keeps local saved play distinct from store records, website hosting and emailed support. Purchases and restoration are described conditionally: the reviewed Android build still has empty product/key configuration. This website update does not claim Google Play release or successful purchase testing.
+
+Evidence reviewed in `sasano-cc/My-little-world` at commit `0e184cbf2f04a42c72d5dd90b460a34ab198258e`:
+
+- `android/app/src/main/java/com/mylittleworld/preview/FullWorldPlugin.java`: Play Billing requests; receipt stored in `noBackupFilesDir`; receipt replacement/deletion; ownership refresh on resume; no child identifier supplied to billing and no publisher purchase server.
+- `android/app/src/main/AndroidManifest.xml`: `allowBackup=true`.
+- `android/app/build.gradle`: Google Play Billing 9.1.0.
+- `android/app/src/main/res/values/billing.xml`: purchase configuration not yet supplied.
+
+References:
+
+- [Google Play Billing integration](https://developer.android.com/google/play/billing/integrate)
+- [Android Auto Backup](https://developer.android.com/identity/data/autobackup)
+- [Google privacy policy](https://policies.google.com/privacy)
+- [Play privacy-policy guidance](https://support.google.com/googleplay/android-developer/answer/9859455)
+
+**Remaining release work:** verify the final Android build's SDK/diagnostic network traffic, including Billing's DataTransport dependency, and its actual backup/transfer behavior. Reconcile any specific data types and retention practices found with this policy and Play's Data safety declaration before app submission. A source review and policy update do not establish that no data is collected. Revisit the policy if a verification backend, SDK, account system or other data handling is added.
