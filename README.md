@@ -49,3 +49,11 @@ References:
 - [Play privacy-policy guidance](https://support.google.com/googleplay/android-developer/answer/9859455)
 
 **Remaining release work:** verify the final Android build's SDK/diagnostic network traffic, including Billing's DataTransport dependency, and its actual backup/transfer behavior. Reconcile any specific data types and retention practices found with this policy and Play's Data safety declaration before app submission. A source review and policy update do not establish that no data is collected. Revisit the policy if a verification backend, SDK, account system or other data handling is added.
+
+## Android Google Play Billing update — 10 November 2026
+
+The privacy page's "On Android" section (now anchored `#android`) describes Android build 22 and later. Those builds connect to Google Play only while Grown-ups is open after the number question, or for follow-up checks on an unfinished purchase a grown-up started. The section adds what Google Play Billing 9.1.0 sends to Google automatically, and how that appears in Play's Data safety section. The saved-world and privacy-rights sections each gained one sentence pointing to it. The wording comes from `docs/GOOGLE-PLAY-PRIVACY-DRAFTS-2026-11-06.md` in `sasano-cc/My-little-world`; the Billing gate is commit `f8539a2`.
+
+- Keep "How this appears on Google Play" matched to the Data safety answers submitted in Play Console. Google's User Data policy requires the two to agree.
+- The wording about when Billing runs is true only for builds 22 and later. On 10 November Play Console showed build 23 on internal testing, and build 15 in a closed-testing release that was never sent for review. Replace build 15 there before sending anything for review.
+- Review the section when Google answers [Issue 572483462](https://issuetracker.google.com/issues/572483462).
